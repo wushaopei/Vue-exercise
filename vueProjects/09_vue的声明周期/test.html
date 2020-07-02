@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="test">
+        <button @click="destoryVM">destroy vm</button>
+        <p v-show="isShow">尚硅谷it教育</p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el:'#test',
+            data:{
+                isShow: true
+            },
+            beforeCreate(){
+                console.log('beforeCreate()')
+            },
+            created(){
+                console.log('created()')
+            },
+            beforeMount(){
+                console.log('beforeMount')
+            },
+            mounted(){
+                console.log('mounted()')
+                this.intervalId = setInterval(() =>{
+                    console.log('-----------')
+                    this.isShow = !this.isShow
+                },1000)
+            },
+            //2.更新阶段
+            beforeUpdate(){
+                console.log('beforeUpdate()')
+            },
+            updated(){
+                console.log('updated()')
+            },
+
+            beforeDestroy(){
+                console.log('beforeDestroy()')
+                //清除定时器
+                clearInterval(this.intervalId)
+            },
+            methods:{
+                destoryVM(){
+                    //干掉VM
+                    this.$destroy()
+                }
+            }
+
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aClass{
+            color:red;
+        }
+        .bClass{
+            color:blue;
+        }
+        .cClass{
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+        1.理解
+            在应用界面中，
+     -->
+    <div id = "demo">
+        <h2>1. class绑定 ： ：class=‘xxx’</h2>
+        <p class = 'cClass':class="a">xxx是字符串</p>
+        <p :class="{aClass: isA, bClass: isB">xxx是对象</p>
+        <p :class="[aClass','cClass]">xxx是数组</p>
+
+        <h2>2. style 绑定</h2>
+        <p :style="{}"></p>
+        <button @click = "update">更新</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#demo',
+            data: {
+                a:'aClass',
+                isA: true,
+            },
+            methods:{
+                update(){
+                    this.a = 'bClass'
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
